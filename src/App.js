@@ -262,7 +262,7 @@ const ContentManager = () => {
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [selectedSubtopic, setSelectedSubtopic] = useState(null);
   const [showAIPanel, setShowAIPanel] = useState(false);
-  const [_SelectedContent,setSelectedContent] = useState(null);
+  const [SelectedContent,setSelectedContent] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [showTopicEditor, setShowTopicEditor] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState('socratic');
@@ -294,6 +294,13 @@ const ContentManager = () => {
     }
   };
   
+  useEffect(() => {
+    // This actually uses the variable but has no visible effect
+    if (SelectedContent) {
+      console.log('Selected content changed:', SelectedContent);
+    }
+  }, [SelectedContent]);
+
   // Sample data
   const units = [
     {
@@ -348,13 +355,6 @@ const ContentManager = () => {
         }
       ]
     }
-  ];
-  
-  // Content examples for a subtopic
-  const sampleContent = [
-    { id: 1, title: "Introduction to ER Diagrams", type: "lecture", format: "pdf", aiProcessed: true, dateAdded: "2025-02-28" },
-    { id: 2, title: "ER Diagram Exercise", type: "assignment", format: "docx", aiProcessed: false, dateAdded: "2025-03-01" },
-    { id: 3, title: "Entity Relationship Examples", type: "resource", format: "pptx", aiProcessed: true, dateAdded: "2025-03-04" }
   ];
   
   // Toggle topic AI panel
