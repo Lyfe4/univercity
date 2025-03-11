@@ -1,25 +1,18 @@
 import React, { useState } from 'react';
 import { 
   BookOpen, 
-  FolderPlus, 
   Upload, 
   Edit, 
-  Trash2, 
   ChevronRight, 
   ChevronDown, 
   Search, 
   Zap, 
   Settings, 
   PlusCircle, 
-  List, 
-  Grid, 
   FileText,
   Copy,
   Award,
   Eye,
-  Tag,
-  File,
-  ArrowRight,
   X,
   Image,
   Code,
@@ -269,11 +262,11 @@ const ContentManager = () => {
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [selectedSubtopic, setSelectedSubtopic] = useState(null);
   const [showAIPanel, setShowAIPanel] = useState(false);
-  const [selectedContent, setSelectedContent] = useState(null);
+  const [_SelectedContent,setSelectedContent] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [showTopicEditor, setShowTopicEditor] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState('socratic');
-  
+
   // Mock user tier (would come from user profile/auth)
   const userTier = 4; // 1-4 scale
   
@@ -363,21 +356,6 @@ const ContentManager = () => {
     { id: 2, title: "ER Diagram Exercise", type: "assignment", format: "docx", aiProcessed: false, dateAdded: "2025-03-01" },
     { id: 3, title: "Entity Relationship Examples", type: "resource", format: "pptx", aiProcessed: true, dateAdded: "2025-03-04" }
   ];
-  
-  // AI Models available based on tier
-  const getAvailableModels = (tier) => {
-    const models = [
-      { id: 1, name: "Basic Content Enhancer", description: "Automatically format and structure content", availableTier: 1 },
-      { id: 2, name: "Quiz Generator", description: "Create quizzes from lecture materials", availableTier: 2 },
-      { id: 3, name: "Explanation Expander", description: "Generate detailed explanations for complex topics", availableTier: 2 },
-      { id: 4, name: "Content Summarizer", description: "Create concise summaries at multiple levels", availableTier: 3 },
-      { id: 5, name: "Claude 3.7 Sonnet", description: "Best for advanced content creation with nuanced understanding", availableTier: 3 },
-      { id: 6, name: "Advanced Model Selection", description: "Choose specific AI models for each task", availableTier: 4 },
-      { id: 7, name: "Parameter Tuning", description: "Fine-tune AI parameters for optimal results", availableTier: 4 }
-    ];
-    
-    return models.filter(model => model.availableTier <= tier);
-  };
   
   // Toggle topic AI panel
   const toggleTopic = (topic) => {
